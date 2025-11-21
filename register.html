@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .register-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .header-section {
+            background: linear-gradient(#3845CE);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .network-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #4A90E2;
+        }
+
+        .register-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .register-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FF6B9D;
+        }
+
+        .section-icon {
+            margin-right: 10px;
+            color: #4A90E2;
+            font-size: 16px;
+        }
+
+        .section-icon::before {
+            content: "";
+        }
+
+        .section-title {
+            color: #3845CE;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group.full-width {
+            flex: 1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4A90E2;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        .create-button {
+            width: 100%;
+            background: linear-gradient(135deg, #FF6B9D, #E91E63);
+            color: white;
+            border: none;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .create-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .signin-link {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signin-link a {
+            color: #3845CE;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .register-card {
+                margin: 10px;
+            }
+            
+            .header-section {
+                padding: 30px 20px;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+    <script>
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            // Direct redirect to login page without any validation
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="register-card">
+        <div class="header-section">
+            <h1 class="register-title">Join Our Alumni Network</h1>
+            <p class="register-subtitle">Create your account to connect with fellow alumni</p>
+        </div>
+        
+        <div class="form-container">
+            <form onsubmit="handleRegistration(event)">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <i class="bi bi-person-vcard section-icon"></i>
+                        <h2 class="section-title">Personal Information</h2>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Middle Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your middle name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <select class="form-input">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Information Section -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon"></div>
+                        <h2 class="section-title">Academic Information</h2>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Student ID</label>
+                            <input type="text" class="form-input" placeholder="Enter your student ID">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Graduation Year</label>
+                            <input type="number" class="form-input" placeholder="YYYY" min="1900" max="2030">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">Course</label>
+                        <input type="text" class="form-input" placeholder="Enter your course/degree">
+                    </div>
+                </div>
+
+                <!-- Professional Information Section -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon"></div>
+                        <h2 class="section-title">Professional Information</h2>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">Current Job</label>
+                        <input type="text" class="form-input" placeholder="Enter your current job title">
+                    </div>
+                </div>
+
+                <!-- Account Information Section -->
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon"></div>
+                        <h2 class="section-title">Account Information</h2>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-row" style="margin-top: 25px;">
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" placeholder="Create a password">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-input" placeholder="Confirm your password">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="create-button">
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="signin-link">
+                Already have an account? <a href="login.html">Sign In</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

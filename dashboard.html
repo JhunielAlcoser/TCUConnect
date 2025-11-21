@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCU Connect Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background-color: #3845CE;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+      
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a.active {
+            background-color: #6b7280;
+            border: 1px solid #9ca3af;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:not(.active):hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sign-out {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sign-out:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .welcome-info h1 {
+            color: #7c3aed;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .user-email {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            font-size: 16px;
+            gap: 8px;
+        }
+
+        .user-email::before {
+            content: "";
+        }
+
+        .last-login {
+            background-color: #e0e7ff;
+            color: #7c3aed;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .last-login::before {
+            content: "";
+        }
+
+        /* Dashboard Cards */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .metric-card {
+            border-radius: 12px;
+            padding: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .metric-card.blue {
+            background-color: #3b82f6;
+        }
+
+        .metric-card.green {
+            background-color: #059669;
+        }
+
+        .metric-card.yellow {
+            background-color: #f59e0b;
+        }
+
+        .metric-icon {
+            font-size: 48px;
+            flex-shrink: 0;
+        }
+
+        .metric-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .metric-number {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .metric-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .welcome-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .metrics-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links a {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">TCU Connect</div>
+            <nav class="nav-links">
+                <a href="dashboard.html" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a href="profile.html"><i class="bi bi-person"></i> Profile</a>
+                <a href="alumni.html"><i class="bi bi-search"></i> Alumni</a>
+                <a href="messages.html"><i class="bi bi-chat-dots"></i> Message</a>
+                <a href="events.html"><i class="bi bi-calendar"></i> Events</a>
+                <a href="announcements.html"><i class="bi bi-megaphone"></i> Announcements</a>
+                <a href="jobs.html"><i class="bi bi-briefcase"></i> Job Posting</a>
+            </nav>
+        </div>
+        <a href="login.html" class="sign-out"><i class="bi bi-door-open"></i> Sign Out</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="dashboard-card">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-info">
+                    <h1>Welcome back, User!</h1>
+                    <div class="user-email"><i class="bi bi-envelope"></i> <span>example@example.com</span></div>
+                </div>
+                <div class="last-login"><i class="bi bi-clock"></i> <span>Last login: MM/DD, 00:00AM/PM</span></div>
+            </div>
+        </div>
+
+        <!-- Dashboard Metrics -->
+        <div class="metrics-container">
+            <div class="metric-card blue">
+                <i class="bi bi-people metric-icon"></i>
+                <div class="metric-content">
+                    <span class="metric-number">1</span>
+                    <div class="metric-label">Total Alumni</div>
+                </div>
+            </div>
+            
+            <div class="metric-card green">
+                <i class="bi bi-briefcase metric-icon"></i>
+                <div class="metric-content">
+                    <span class="metric-number">1</span>
+                    <div class="metric-label">Job Posting</div>
+                </div>
+            </div>
+            
+            <div class="metric-card yellow">
+                <i class="bi bi-calendar-event metric-icon"></i>
+                <div class="metric-content">
+                    <span class="metric-number">1</span>
+                    <div class="metric-label">Upcoming Events</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
