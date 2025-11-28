@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details - TCU Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3845CE;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a.active {
+            background-color: #6b7280;
+            border: 1px solid #9ca3af;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sign-out {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .sign-out:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3845CE;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .job-details-container {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        .job-main {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .job-header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+        }
+
+        .job-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background-color: #eef2ff;
+            color: #3845CE;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .job-section {
+            margin-bottom: 32px;
+        }
+
+        .job-section h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .job-section p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .job-section ul {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .job-section li {
+            margin-bottom: 8px;
+        }
+
+        .job-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .sidebar-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .apply-card {
+            position: sticky;
+            top: 30px;
+        }
+
+        .apply-button {
+            width: 100%;
+            background-color: #3845CE;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .apply-button:hover {
+            background-color: #2d38b8;
+        }
+
+        .secondary-button {
+            width: 100%;
+            background-color: #eef2ff;
+            color: #3845CE;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .secondary-button:hover {
+            background-color: #e0e7ff;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-item i {
+            color: #3845CE;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            color: #111827;
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            .job-details-container {
+                grid-template-columns: 1fr;
+            }
+
+            .apply-card {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">TCU Connect</div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a href="profile.html"><i class="bi bi-person"></i> Profile</a>
+                <a href="alumni.html"><i class="bi bi-search"></i> Alumni</a>
+                <a href="messages.html"><i class="bi bi-chat-dots"></i> Message</a>
+                <a href="events.html"><i class="bi bi-calendar"></i> Events</a>
+                <a href="announcements.html"><i class="bi bi-megaphone"></i> Announcements</a>
+                <a href="jobs.html" class="active"><i class="bi bi-briefcase"></i> Job Posting</a>
+            </nav>
+        </div>
+        <a href="login.html" class="sign-out"><i class="bi bi-door-open"></i> Sign Out</a>
+    </header>
+
+    <main class="main-content">
+        <a href="jobs.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Job Board
+        </a>
+
+        <div class="job-details-container">
+            <div class="job-main">
+                <div class="job-header">
+                    <h1 class="job-title">Senior Software Engineer</h1>
+                    <div class="job-meta">
+                        <span><i class="bi bi-building"></i> Stellar Tech</span>
+                        <span><i class="bi bi-geo-alt"></i> Manila, Philippines</span>
+                        <span><i class="bi bi-cash-stack"></i> $140k - $165k</span>
+                        <span><i class="bi bi-clock"></i> Posted 2 days ago</span>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Full-time</span>
+                        <span class="tag">Senior</span>
+                        <span class="tag">React • Node</span>
+                        <span class="tag">Hybrid</span>
+                    </div>
+                </div>
+
+                <div class="job-section">
+                    <h3>Job Description</h3>
+                    <p>
+                        We're looking for an experienced Senior Software Engineer to join our growing team. 
+                        You'll lead cross-functional squads shipping AI-powered productivity tools for enterprise teams. 
+                        This role offers the opportunity to work on cutting-edge technology while mentoring junior developers.
+                    </p>
+                    <p>
+                        You'll collaborate closely with product managers, designers, and other engineers to build 
+                        scalable solutions that impact millions of users worldwide.
+                    </p>
+                </div>
+
+                <div class="job-section">
+                    <h3>Key Responsibilities</h3>
+                    <ul>
+                        <li>Design and implement scalable backend services using Node.js and modern frameworks</li>
+                        <li>Build responsive frontend components with React and TypeScript</li>
+                        <li>Lead code reviews and maintain high code quality standards</li>
+                        <li>Mentor junior engineers and contribute to team growth</li>
+                        <li>Collaborate with cross-functional teams to deliver features on time</li>
+                        <li>Participate in architecture decisions and technical planning</li>
+                    </ul>
+                </div>
+
+                <div class="job-section">
+                    <h3>Requirements</h3>
+                    <ul>
+                        <li>5+ years of professional software development experience</li>
+                        <li>Strong proficiency in JavaScript/TypeScript, React, and Node.js</li>
+                        <li>Experience with cloud platforms (AWS, Azure, or GCP)</li>
+                        <li>Solid understanding of database design and optimization</li>
+                        <li>Experience with CI/CD pipelines and DevOps practices</li>
+                        <li>Excellent communication and leadership skills</li>
+                        <li>Bachelor's degree in Computer Science or related field (or equivalent experience)</li>
+                    </ul>
+                </div>
+
+                <div class="job-section">
+                    <h3>Nice to Have</h3>
+                    <ul>
+                        <li>Experience with AI/ML technologies</li>
+                        <li>Previous startup experience</li>
+                        <li>Open source contributions</li>
+                        <li>Experience with microservices architecture</li>
+                    </ul>
+                </div>
+
+                <div class="job-section">
+                    <h3>Benefits</h3>
+                    <ul>
+                        <li>Competitive salary and equity package</li>
+                        <li>Comprehensive health, dental, and vision insurance</li>
+                        <li>Flexible work arrangements (hybrid/remote options)</li>
+                        <li>Professional development budget</li>
+                        <li>Generous paid time off and holidays</li>
+                        <li>401(k) matching program</li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside class="job-sidebar">
+                <div class="sidebar-card apply-card">
+                    <button class="apply-button">Apply Now</button>
+                    <button class="secondary-button">Save Job</button>
+                </div>
+
+                <div class="sidebar-card">
+                    <h4>Job Overview</h4>
+                    <div class="info-item">
+                        <i class="bi bi-building"></i>
+                        <div class="info-content">
+                            <div class="info-label">Company</div>
+                            <div class="info-value">Stellar Tech</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div class="info-content">
+                            <div class="info-label">Location</div>
+                            <div class="info-value">Manila, Philippines</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-briefcase"></i>
+                        <div class="info-content">
+                            <div class="info-label">Job Type</div>
+                            <div class="info-value">Full-time</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-cash-stack"></i>
+                        <div class="info-content">
+                            <div class="info-label">Salary Range</div>
+                            <div class="info-value">$140k - $165k</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="bi bi-calendar"></i>
+                        <div class="info-content">
+                            <div class="info-label">Posted</div>
+                            <div class="info-value">2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h4>Share This Job</h4>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="secondary-button" style="flex: 1;"><i class="bi bi-link-45deg"></i> Copy Link</button>
+                        <button class="secondary-button" style="flex: 1;"><i class="bi bi-envelope"></i> Email</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+</body>
+</html>
+

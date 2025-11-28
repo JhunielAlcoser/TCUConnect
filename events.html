@@ -156,6 +156,26 @@
             color: #3845CE;
         }
 
+        .event-actions a.btn-outline {
+            flex: 1;
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #eef2ff;
+            color: #3845CE;
+            transition: background-color 0.3s;
+        }
+
+        .event-actions a.btn-outline:hover {
+            background-color: #e0e7ff;
+        }
+
         .timeline {
             margin-top: 40px;
             background: white;
@@ -239,7 +259,7 @@
                 <p class="event-meta">Campus Innovation Hub • Hybrid</p>
                 <p>Panels from alumni founders, networking lounge, and recruiter booths.</p>
                 <div class="event-actions">
-                    <button class="btn-outline">Details</button>
+                    <a href="event-details.html" class="btn-outline" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">Details</a>
                     <button class="btn-primary">Register</button>
                 </div>
             </article>

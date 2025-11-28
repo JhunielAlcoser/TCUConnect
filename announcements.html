@@ -167,6 +167,35 @@
             color: #3845CE;
         }
 
+        .announcement-actions a {
+            border: none;
+            border-radius: 999px;
+            padding: 10px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .announcement-actions a.btn-primary {
+            background-color: #3845CE;
+            color: white;
+        }
+
+        .announcement-actions a.btn-outline {
+            background-color: #eef2ff;
+            color: #3845CE;
+            transition: background-color 0.3s;
+        }
+
+        .announcement-actions a.btn-outline:hover {
+            background-color: #e0e7ff;
+        }
+
+        .announcement-actions a.btn-primary:hover {
+            background-color: #2d38b8;
+        }
+
        
 
         @media (max-width: 768px) {
@@ -227,7 +256,7 @@
                 <div class="announcement-title">Mentor applications for Spring 2026 cohort now open</div>
                 <p>Partner with graduating seniors for 6 weeks to support job search strategies and interview prep.</p>
                 <div class="announcement-actions">
-                    <button class="btn-primary">Apply</button>
+                    <a href="announcement-details.html" class="btn-primary" style="text-decoration: none; display: inline-block;">View Details</a>
                     <button class="btn-outline">Share</button>
                 </div>
             </article>
@@ -240,7 +269,7 @@
                 <div class="announcement-title">Regional chapter grants awarded</div>
                 <p>Congratulations to Dallas-Fort Worth and Singapore chapters for launching new scholarship drives.</p>
                 <div class="announcement-actions">
-                    <button class="btn-outline">View Details</button>
+                    <a href="announcement-details.html" class="btn-outline" style="text-decoration: none; display: inline-block;">View Details</a>
                     <button class="btn-outline">Contact Lead</button>
                 </div>
             </article>
@@ -253,7 +282,7 @@
                 <div class="announcement-title">Class of 2014 reunion schedule</div>
                 <p>Three-day itinerary includes campus tour, faculty roundtable, and family picnic.</p>
                 <div class="announcement-actions">
-                    <button class="btn-outline">View Agenda</button>
+                    <a href="announcement-details.html" class="btn-outline" style="text-decoration: none; display: inline-block;">View Details</a>
                 </div>
             </article>
         </section>

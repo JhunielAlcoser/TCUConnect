@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - TCU Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3845CE;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a.active {
+            background-color: #6b7280;
+            border: 1px solid #9ca3af;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .sign-out {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .sign-out:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3845CE;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .form-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3845CE;
+            box-shadow: 0 0 0 3px rgba(56, 69, 206, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group textarea.large {
+            min-height: 200px;
+        }
+
+        .form-group .help-text {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 6px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 24px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .btn-primary {
+            background-color: #3845CE;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #2d38b8;
+        }
+
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #374151;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+
+        .tag-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            min-height: 50px;
+        }
+
+        .tag {
+            background-color: #eef2ff;
+            color: #3845CE;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tag-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 120px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">TCU Connect</div>
+            <nav class="nav-links">
+                <a href="dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a href="profile.html"><i class="bi bi-person"></i> Profile</a>
+                <a href="alumni.html"><i class="bi bi-search"></i> Alumni</a>
+                <a href="messages.html"><i class="bi bi-chat-dots"></i> Message</a>
+                <a href="events.html"><i class="bi bi-calendar"></i> Events</a>
+                <a href="announcements.html"><i class="bi bi-megaphone"></i> Announcements</a>
+                <a href="jobs.html" class="active"><i class="bi bi-briefcase"></i> Job Posting</a>
+            </nav>
+        </div>
+        <a href="login.html" class="sign-out"><i class="bi bi-door-open"></i> Sign Out</a>
+    </header>
+
+    <main class="main-content">
+        <a href="jobs.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Job Board
+        </a>
+
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Post a Job</h1>
+                <p>Share job opportunities with the TCU alumni community</p>
+            </div>
+
+            <form id="jobPostForm">
+                <div class="form-section">
+                    <h3>Job Information</h3>
+                    
+                    <div class="form-group">
+                        <label>Job Title <span class="required">*</span></label>
+                        <input type="text" name="jobTitle" placeholder="e.g., Senior Software Engineer" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Company Name <span class="required">*</span></label>
+                            <input type="text" name="companyName" placeholder="e.g., Stellar Tech" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Job Type <span class="required">*</span></label>
+                            <select name="jobType" required>
+                                <option value="">Select job type</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                                <option value="freelance">Freelance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Location <span class="required">*</span></label>
+                            <input type="text" name="location" placeholder="e.g., Manila, Philippines" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Work Arrangement</label>
+                            <select name="workArrangement">
+                                <option value="on-site">On-site</option>
+                                <option value="remote">Remote</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Salary Range (Optional)</label>
+                            <input type="text" name="salaryRange" placeholder="e.g., $140k - $165k">
+                        </div>
+                        <div class="form-group">
+                            <label>Experience Level</label>
+                            <select name="experienceLevel">
+                                <option value="">Select level</option>
+                                <option value="entry">Entry Level</option>
+                                <option value="mid">Mid Level</option>
+                                <option value="senior">Senior Level</option>
+                                <option value="executive">Executive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Job Description</h3>
+                    
+                    <div class="form-group">
+                        <label>Job Summary <span class="required">*</span></label>
+                        <textarea name="jobSummary" class="large" placeholder="Provide a brief overview of the position..." required></textarea>
+                        <div class="help-text">A concise summary that will appear in job listings</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Detailed Description <span class="required">*</span></label>
+                        <textarea name="jobDescription" class="large" placeholder="Describe the role, responsibilities, and what makes this opportunity special..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Key Responsibilities <span class="required">*</span></label>
+                        <textarea name="responsibilities" class="large" placeholder="List the main responsibilities and duties (one per line or use bullet points)..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Requirements <span class="required">*</span></label>
+                        <textarea name="requirements" class="large" placeholder="List the required qualifications, skills, and experience..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nice to Have (Optional)</label>
+                        <textarea name="niceToHave" placeholder="List any preferred qualifications or skills..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Benefits (Optional)</label>
+                        <textarea name="benefits" placeholder="List any benefits, perks, or compensation details..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Skills & Tags</h3>
+                    
+                    <div class="form-group">
+                        <label>Required Skills</label>
+                        <div class="tag-input-container" id="skillsContainer">
+                            <input type="text" class="tag-input" id="skillInput" placeholder="Type a skill and press Enter">
+                        </div>
+                        <div class="help-text">Add relevant skills that candidates should have</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Contact Email <span class="required">*</span></label>
+                            <input type="email" name="contactEmail" placeholder="recruiter@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Application URL (Optional)</label>
+                            <input type="url" name="applicationUrl" placeholder="https://company.com/apply">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Notes (Optional)</label>
+                        <textarea name="additionalNotes" placeholder="Any additional information for applicants..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Post Job</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='jobs.html'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Handle skill tags
+        const skillInput = document.getElementById('skillInput');
+        const skillsContainer = document.getElementById('skillsContainer');
+        const skills = [];
+
+        skillInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const skill = skillInput.value.trim();
+                if (skill && !skills.includes(skill)) {
+                    skills.push(skill);
+                    addSkillTag(skill);
+                    skillInput.value = '';
+                }
+            }
+        });
+
+        function addSkillTag(skill) {
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.innerHTML = `${skill} <span class="tag-remove" onclick="removeSkill('${skill}')">×</span>`;
+            skillsContainer.insertBefore(tag, skillInput);
+        }
+
+        function removeSkill(skill) {
+            const index = skills.indexOf(skill);
+            if (index > -1) {
+                skills.splice(index, 1);
+            }
+            const tags = skillsContainer.querySelectorAll('.tag');
+            tags.forEach(tag => {
+                if (tag.textContent.includes(skill)) {
+                    tag.remove();
+                }
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('jobPostForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(e.target);
+            const jobData = {
+                skills: skills,
+                ...Object.fromEntries(formData)
+            };
+            
+            // In a real application, you would send this to a server
+            console.log('Job posting data:', jobData);
+            
+            // Show success message (in a real app, you'd handle this properly)
+            alert('Job posting submitted successfully! It will be reviewed before being published.');
+            window.location.href = 'jobs.html';
+        });
+    </script>
+</body>
+</html>
+
